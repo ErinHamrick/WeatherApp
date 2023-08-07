@@ -1,12 +1,13 @@
 const currentDate = dayjs().format("dddd, MMMM D, YYYY");
 const apiKey = '1c8255898de80ea443150fc125ae7091';
 
-function updateDate(){
-    let date = document.getElementById('date');
-    date.textContent = currentDate;
-}
+// console.log(currentDate);
+// function updateDate(){
+    // let date = document.getElementById('date');
+    // date.textContent = currentDate;
+// }
 
-updateDate();
+// updateDate();
 
 const submitBtn = document.getElementById('submitBtn');
 
@@ -24,12 +25,36 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
 console.log(response);
     // do something
 let cityName = response.name;
-// let icon = response.weather[1];
+let icon = response.weather[0].icon;
 let temp = response.main.temp;
 let humidity = response.main.humidity;
 let wind = response.wind.speed;
-console.log(cityName, temp, humidity, wind)
- 
+let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+console.log(cityName, iconURL, temp, humidity, wind);
+let resultsEl = document.getElementById('results');
+
+
+let currentEl = document.createElement('p');
+currentEl.innerHTML = "Current Conditions";
+currentEl.setAttribute('class', 'current');
+
+let cityEl = document.createElement('span');
+cityEl.innerHTML = cityName;
+
+let iconEl = document.createElement('img');
+iconEl.src =  iconURL;
+
+let tempEl = document.createElement('span');
+tempEl.innerHTML = temp + '\u00B0';
+
+let humidEl = document.createElement('span');
+humidEl.innerHTML = humidity + '% humidity'; 
+
+let windEl = document.createElement('p');
+windEl.innerHTML = 'wind speed: ' + wind + ' ' + 'mph';
+
+resultsEl.append(currentEl, cityEl, iconEl, tempEl, humidEl, windEl);
+
 
 })};
 

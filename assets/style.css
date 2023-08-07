@@ -28,14 +28,6 @@ header {
     margin-right: 10px;
 }
 
-#date {
-    font-weight: 500;
-    font-size: 25px;
-}
-
-/* input {
-    
-} */
 
 #submitBtn {
     margin-top: 10px;
@@ -44,7 +36,14 @@ header {
     border-radius: 5%;
     background-color: var(--header-color);
 }
+ 
+
+
+span {
+    margin-left: 15px;
+}
 /* 
 #current {
+
 
 } */
