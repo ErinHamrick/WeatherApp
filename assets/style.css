@@ -33,9 +33,10 @@ header {
     font-size: 25px;
 }
 
-input {
+/* input {
     
-}
+} */
+
 #submitBtn {
     margin-top: 10px;
     width: 80px;
@@ -43,7 +44,7 @@ input {
     border-radius: 5%;
     background-color: var(--header-color);
 }
-
+/* 
 #current {
 
-}
+} */

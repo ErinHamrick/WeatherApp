@@ -25,10 +25,10 @@ console.log(response);
     // do something
 let cityName = response.name;
 // let icon = response.weather[1];
-// let temp = response.main;
-// let humidity;
-// let wind;
-console.log(cityName)
+let temp = response.main.temp;
+let humidity = response.main.humidity;
+let wind = response.wind.speed;
+console.log(cityName, temp, humidity, wind)
  
 
 })};
@@ -39,10 +39,6 @@ submitBtn.addEventListener('click', () => {
 
 });
 
-
-
-// capture text input from city search
-// save data to local storage as well as in a variable
 
 
 // write function to fetch current weather data
