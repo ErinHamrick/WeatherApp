@@ -28,6 +28,11 @@ header {
     margin-right: 10px;
 }
 
+#date {
+    font-weight: 500;
+    font-size: 25px;
+}
+
 input {
     
 }
