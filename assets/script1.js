@@ -1,6 +1,5 @@
 const currentDate = dayjs().format("dddd, MMMM D, YYYY");
 const apiKey = '1c8255898de80ea443150fc125ae7091';
-const currentApi = `https://api.openweathermap.org/data/2.5/weather?q={city}&appid=${apiKey}`
 
 function updateDate(){
     let date = document.getElementById('date');
@@ -15,25 +14,30 @@ function storeCity () {
     let city = document.getElementById('input').value;
     let key = "City";
     localStorage.setItem(key, city);
-    return city
-
+    return city;
 }
 
 function fetchCurrentAPI (city){
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`).then((data) => {
     return data.json()
 }).then((response) =>{
-// do something
-response.name;
-})
+console.log(response);
+    // do something
+let cityName = response.name;
+// let icon = response.weather[1];
+// let temp = response.main;
+// let humidity;
+// let wind;
+console.log(cityName)
+ 
 
-};
+})};
 
 submitBtn.addEventListener('click', () => {
     const cityName = storeCity();
     fetchCurrentAPI(cityName); 
 
-} );
+});
 
 
 
