@@ -16,20 +16,20 @@
 			class="container-fluid row justify-content-center align-items-center">
 			Weather Dashboard
 		</header>
-		<section class="container-fluid p-2">
-			<div
-				id="search"
-				class="col-3 container-fluid text-center float-start p-1">
-				Search by City: <br />
-				<input type="text" class="p-1 m-2 col-8" id="input" /> <br />
-				<button id="submitBtn">Search</button>
-			</div>
-		</section>
-		<section class="container-fluid col-8" id="current">
-			<div id="results" class="container-fluid col-8">
-				 
-			</div>
-		</section>
+		<main class="container-fluid d-flex-wrap">
+			<section class="container-fluid row p-2">
+				<div id="search" class="col text-center  p-1">
+					Search by City: <br />
+					<input type="text" class="p-1 m-2 col-8" id="input" /> <br />
+					<button id="submitBtn">Search</button>
+				</div>
+			</section>
+
+			<section class="container-fluid row justify-content-center" id="current">
+				<div id="results" class="container col-lg-8 justify-items-center"></div>
+			</section>
+		</main>
+
 		<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 
 		<script
