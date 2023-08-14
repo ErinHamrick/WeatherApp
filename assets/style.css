@@ -1,49 +1,59 @@
-
 :root {
---header-color: #6A7C89;
---border-color: #333739;
---main-bg-color: #d8e9fb;
+	--header-color: #6a7c89;
+	--border-color: #333739;
+	--main-bg-color: #bcb49c;
 }
 body {
-    background-color: var(--main-bg-color);
-    color: var(--border-color)
+	background-color: var(--main-bg-color);
+	color: var(--border-color);
 }
 
 header {
-    background-color: var(--header-color);
-    font-size: 35px;
-    min-height: 80px;
-    font-weight: bold;
-    flex-wrap: wrap;
+	background-color: var(--header-color);
+	font-size: 35px;
+	min-height: 80px;
+	font-weight: bold;
+	flex-wrap: wrap;
 }
 
 #search {
-    border: solid 2px var(--border-color);
-    border-radius: 5px;
-    min-height: 100px;
-    min-width: 200px;
-    font-weight: 600;   
-    
+	
+	border: solid 2px var(--border-color);
+	border-radius: 5px;
+	min-height: 75px;
+	min-width: 200px;
+	font-weight: 600;
 }
 #submitBtn {
-    margin-top: 10px;
-    width: 80px;
-    height: 30px;
-    border-radius: 5%;
-    background-color: var(--header-color);
+	margin-top: 10px;
+	width: 80px;
+	height: 30px;
+	border-radius: 5%;
+	background-color: var(--header-color);
 }
 
 .icon {
-    height: 50px;
-    width: 50px;
+	height: 50px;
+	width: 50px;
 }
 
 span {
-    margin-left: 10px;
-    margin-right: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
- 
+
 #current {
-    position: relative;
-    
-} 
+	position: relative;
+}
+
+.days {
+    display: inline-block;
+    border: solid 2px var(--border-color);
+	border-radius: 5px;
+    min-width: 100px;
+	max-width: 200px;
+    min-height: 300px;
+    margin: 10px;
+    padding: 4px;
+	background-color: #BFC9CA;
+}
