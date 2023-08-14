@@ -46,7 +46,8 @@ function fetchCurrentAPI(city) {
 			let cityEl = document.createElement("span");
 			cityEl.innerHTML = cityName;
 			cityEl.setAttribute("class", "col-2");
-
+            cityEl.setAttribute("class", "cityName")
+            
 			let iconEl = document.createElement("img");
 			iconEl.setAttribute("class", "icon");
 			iconEl.src = iconURL;
