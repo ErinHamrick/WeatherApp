@@ -69,7 +69,7 @@ function fetchCurrentAPI(city) {
 			resultsEl.append(cityEl, dateEl, iconEl, tempEl, humidEl, windEl);
 		});
 }
-
+ 
 function fetchForecastAPI(city) {
 	fetch(
 		`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`
@@ -79,9 +79,11 @@ function fetchForecastAPI(city) {
 		})
 		.then((response) => {
 			console.log(response);
+			let forecastEl = document.getElementById("forecast");
+			forecastEl.innerHTML = '';
 			for (i = 0; i < 40; i += 8) {
 				let div = document.createElement("div");
-
+				
 				let icon = response.list[i].weather[0].icon;
 				let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 				let iconEl = document.createElement("img");
@@ -104,8 +106,10 @@ function fetchForecastAPI(city) {
 				let humidEl = document.createElement("p");
 				humidEl.innerHTML = "Humidity: " + humid + "%";
 
+				
+
 				div.append(dateEl, iconEl, tempEl, windEl, humidEl);
-				let forecastEl = document.getElementById("forecast");
+				// let forecastEl = document.getElementById("forecast");
 				div.setAttribute("class", "days");
 				forecastEl.append(div);
 			}
