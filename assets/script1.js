@@ -1,14 +1,6 @@
 const currentDate = dayjs().format("MMMM D, YYYY");
 const apiKey = "1c8255898de80ea443150fc125ae7091";
 
-// console.log(currentDate);
-// function updateDate(){
-// let date = document.getElementById('date');
-// date.textContent = currentDate;
-// }
-
-// updateDate();
-
 const submitBtn = document.getElementById("submitBtn");
 
 function storeCity() {
@@ -20,6 +12,17 @@ function storeCity() {
 	return cityName;
 }
 
+function getStoredCity() {
+    let storedCity = localStorage.getItem("City");     
+	if (storedCity) {
+        let buttons = document.getElementById('buttons');
+        let button = document.createElement('button');
+        button.innerHTML = storedCity;
+        button.setAttribute("class", "cityButton"); 
+        buttons.append(button);
+    }
+}
+
 function fetchCurrentAPI(city) {
 	fetch(
 		`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`
@@ -28,8 +31,6 @@ function fetchCurrentAPI(city) {
 			return data.json();
 		})
 		.then((response) => {
-			// console.log(response);
-			// do something
 			let cityName = response.name;
 			let icon = response.weather[0].icon;
 			let temp = response.main.temp;
@@ -41,13 +42,12 @@ function fetchCurrentAPI(city) {
 
 			let dateEl = document.createElement("span");
 			dateEl.innerHTML = currentDate;
-			dateEl.setAttribute("class", "col-2");
+			dateEl.setAttribute("class", "col");
 
 			let cityEl = document.createElement("span");
 			cityEl.innerHTML = cityName;
-			cityEl.setAttribute("class", "col-2");
-            cityEl.setAttribute("class", "cityName")
-            
+			cityEl.setAttribute("class", "col-2, cityName");
+                        
 			let iconEl = document.createElement("img");
 			iconEl.setAttribute("class", "icon");
 			iconEl.src = iconURL;
@@ -67,8 +67,11 @@ function fetchCurrentAPI(city) {
 			resultsEl.textContent = "";
 
 			resultsEl.append(cityEl, dateEl, iconEl, tempEl, humidEl, windEl);
+
+			
+
 		});
-}
+		}
  
 function fetchForecastAPI(city) {
 	fetch(
@@ -106,24 +109,23 @@ function fetchForecastAPI(city) {
 				let humidEl = document.createElement("p");
 				humidEl.innerHTML = "Humidity: " + humid + "%";
 
-				
-
 				div.append(dateEl, iconEl, tempEl, windEl, humidEl);
 				// let forecastEl = document.getElementById("forecast");
 				div.setAttribute("class", "days");
 				forecastEl.append(div);
 			}
-			console.log(response);
-			console.log(iconURL);
-			console.log(response.list[0].dt);
-			console.log(response.list[0].main.temp);
-			console.log(response.list[0].wind.speed);
-			console.log(response.list[0].main.humidity);
+			// console.log(response);
+			// console.log(iconURL);
+			// console.log(response.list[0].dt);
+			// console.log(response.list[0].main.temp);
+			// console.log(response.list[0].wind.speed);
+			// console.log(response.list[0].main.humidity);
 		});
 }
 
 submitBtn.addEventListener("click", () => {
 	const cityName = storeCity();
+	const getCity = getStoredCity();
 	fetchCurrentAPI(cityName);
 	fetchForecastAPI(cityName);
 });
