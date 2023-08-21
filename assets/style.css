@@ -1,6 +1,6 @@
 :root {
 	--header-color: #6a7c89;
-	--border-color: #333739;
+	--border-color:#333739 ;
 	--main-bg-color: #bcb49c;
 	--secondary-bg-color: #BFC9CA;
 }
@@ -31,6 +31,10 @@ header {
 	height: 30px;
 	border-radius: 5%;
 	background-color: var(--header-color);
+}
+
+#clear {
+	margin-left: 30px;
 }
 
 .icon {
@@ -76,3 +80,10 @@ span {
 	color: var(--border-color);
 }
 
+@media screen and(max-width: 900px) {
+	#submitBtn, #clear {
+		color: #333739;
+		
+	}
+	
+}
