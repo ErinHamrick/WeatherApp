@@ -3,27 +3,30 @@ const apiKey = "1c8255898de80ea443150fc125ae7091";
 
 const submitBtn = document.getElementById("submitBtn");
 
-const clearBtn = document.getElementById('clear');
-clearBtn.addEventListener('click', () => {location.reload()})
+const clearBtn = document.getElementById("clear");
+clearBtn.addEventListener("click", () => {
+	location.reload();
+});
 
-function storeCity() {
-	let city = document.getElementById("input");
-	let cityName = city.value;
+function storeCity(cityName) {
 	let key = "City";
 	localStorage.setItem(key, cityName);
-	city.value = "";
-	return cityName;
 }
 
 function getStoredCity() {
-    let storedCity = localStorage.getItem("City");     
+	let storedCity = localStorage.getItem("City");
 	if (storedCity) {
-        let buttons = document.getElementById('buttons');
-        let button = document.createElement('button');
-        button.innerHTML = storedCity;
-        button.setAttribute("class", "cityButton"); 
-        buttons.append(button);
-    }
+		let buttons = document.getElementById("buttons");
+		let button = document.createElement("button");
+		button.innerHTML = storedCity;
+		button.setAttribute("class", "cityButton");
+		buttons.append(button);
+
+		button.addEventListener("click", () => {
+			fetchCurrentAPI(storedCity);
+			fetchForecastAPI(storedCity);
+		});
+	}
 }
 
 function fetchCurrentAPI(city) {
@@ -34,6 +37,17 @@ function fetchCurrentAPI(city) {
 			return data.json();
 		})
 		.then((response) => {
+			console.log(response);
+			let resultsEl = document.getElementById("results");
+
+			resultsEl.textContent = "";
+
+			if (response.message === "city not found") {
+				alert("City not found");
+				return null;
+			}
+			//empty city Input box
+
 			let cityName = response.name;
 			let icon = response.weather[0].icon;
 			let temp = response.main.temp;
@@ -41,7 +55,6 @@ function fetchCurrentAPI(city) {
 			let wind = response.wind.speed;
 			let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 			// console.log(cityName, iconURL, temp, humidity, wind);
-			let resultsEl = document.getElementById("results");
 
 			let dateEl = document.createElement("span");
 			dateEl.innerHTML = currentDate;
@@ -50,7 +63,7 @@ function fetchCurrentAPI(city) {
 			let cityEl = document.createElement("span");
 			cityEl.innerHTML = cityName;
 			cityEl.setAttribute("class", "col-2, cityName");
-                        
+
 			let iconEl = document.createElement("img");
 			iconEl.setAttribute("class", "icon");
 			iconEl.src = iconURL;
@@ -67,15 +80,14 @@ function fetchCurrentAPI(city) {
 			windEl.setAttribute("class", "col-2");
 			windEl.innerHTML = "Wind Speed: " + wind + " " + "mph";
 
-			resultsEl.textContent = "";
-
 			resultsEl.append(cityEl, dateEl, iconEl, tempEl, humidEl, windEl);
 
-			
-
+			console.log(city); 
+			storeCity(cityName);
+			getStoredCity();
 		});
-		}
- 
+}
+
 function fetchForecastAPI(city) {
 	fetch(
 		`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`
@@ -86,10 +98,10 @@ function fetchForecastAPI(city) {
 		.then((response) => {
 			console.log(response);
 			let forecastEl = document.getElementById("forecast");
-			forecastEl.innerHTML = '';
+			forecastEl.innerHTML = "";
 			for (i = 0; i < 40; i += 8) {
 				let div = document.createElement("div");
-				
+
 				let icon = response.list[i].weather[0].icon;
 				let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 				let iconEl = document.createElement("img");
@@ -126,9 +138,10 @@ function fetchForecastAPI(city) {
 		});
 }
 
-submitBtn.addEventListener("click", () => {
-	const cityName = storeCity();
-	const getCity = getStoredCity();
-	fetchCurrentAPI(cityName);
-	fetchForecastAPI(cityName);
+submitBtn.addEventListener("click", async () => {
+	let cityElement = document.getElementById("input");
+	let city = cityElement.value;
+	fetchCurrentAPI(city);
+	fetchForecastAPI(city);
+	cityElement.value = "";
 });
