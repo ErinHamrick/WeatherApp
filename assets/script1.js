@@ -3,6 +3,9 @@ const apiKey = "1c8255898de80ea443150fc125ae7091";
 
 const submitBtn = document.getElementById("submitBtn");
 
+const clearBtn = document.getElementById('clear');
+clearBtn.addEventListener('click', () => {location.reload()})
+
 function storeCity() {
 	let city = document.getElementById("input");
 	let cityName = city.value;
