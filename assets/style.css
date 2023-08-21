@@ -60,13 +60,18 @@ span {
     display: inline-block;
     border: solid 2px var(--border-color);
 	border-radius: 5px;
-    min-width: 100px;
+    min-width: 175px;
 	max-width: 200px;
     min-height: 300px;
     margin: 10px;
     padding: 4px;
 	background-color: var(--secondary-bg-color);
+	
 }
+#forecast {
+	text-align: center;
+}
+
 
 #buttons {
 	display: inline-flex;
@@ -80,10 +85,4 @@ span {
 	color: var(--border-color);
 }
 
-@media screen and(max-width: 900px) {
-	#submitBtn, #clear {
-		color: #333739;
-		
-	}
 	
-}
