@@ -8,7 +8,7 @@ body {
 	background-color: var(--main-bg-color);
 	color: var(--border-color);
 	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-		url('/assets/City-Background-of-Daylight-Graphics-3833953-1.jpg');
+		url('/assets/images/City-Background-of-Daylight-Graphics-3833953-1.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -44,7 +44,7 @@ header {
 #clear {
 	margin-top: 10px;
 	margin-bottom: 15px;
-	width: 90px;
+	width: fit-content;
 	height: 40px;
 	border-radius: 7%;
 	background-color: var(--secondary-bg-color);
