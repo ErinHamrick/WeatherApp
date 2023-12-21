@@ -48,6 +48,7 @@ header {
 	height: 40px;
 	border-radius: 7%;
 	background-color: var(--secondary-bg-color);
+	text-align: center;
 }
 
 #clear {
@@ -104,9 +105,9 @@ span {
 	color: var(--border-color);
 }
 
-@media only screen and (max-width: 767px) {
-	.current,
-	.search {
+@media only screen and (max-width: 650px) {
+	#current,
+	#search {
 		font-size: 1rem;
 	}
 }
