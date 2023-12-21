@@ -1,41 +1,57 @@
 :root {
 	--header-color: #6a7c89;
-	--border-color:#333739 ;
+	--border-color: #333739;
 	--main-bg-color: #bcb49c;
-	--secondary-bg-color: #BFC9CA;
+	--secondary-bg-color: #bfc9ca;
 }
 body {
 	background-color: var(--main-bg-color);
 	color: var(--border-color);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+		url('/assets/City-Background-of-Daylight-Graphics-3833953-1.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0;
+}
+
+html,
+body {
+	height: 100%;
 }
 
 header {
-	background-color: var(--header-color);
 	font-size: 35px;
 	min-height: 80px;
 	font-weight: bold;
 	flex-wrap: wrap;
 }
 
-#search {	
-	border: solid 2px var(--border-color);
-	border-radius: 5px;
+#search {
 	min-height: 75px;
 	min-width: 200px;
 	font-weight: 600;
+	font-size: 1.5rem;
 }
 
-#submitBtn, #clear {
+#input {
+	background-color: var(--secondary-bg-color);
+	min-width: 50%;
+	border-radius: 5px;
+}
+
+#submitBtn,
+#clear {
 	margin-top: 10px;
 	margin-bottom: 15px;
-	width: 80px;
-	height: 30px;
-	border-radius: 5%;
+	width: 90px;
+	height: 40px;
+	border-radius: 7%;
 	background-color: var(--secondary-bg-color);
 }
 
 #clear {
-	margin-left: 30px;
+	margin-left: 10px;
 }
 
 .icon {
@@ -45,7 +61,8 @@ header {
 
 .cityName {
 	font-weight: bold;
-	font-size: 1.5rem;
+	font-size: 2rem;
+	color: white;
 }
 
 span {
@@ -54,30 +71,29 @@ span {
 }
 
 #current {
+	color: white;
+	font-size: 1.5rem;
 	text-align: center;
 	position: relative;
 }
 
 .days {
-    display: inline-block;
-    border: solid 2px var(--border-color);
+	display: inline-block;
+	border: solid 2px var(--border-color);
 	border-radius: 5px;
-    min-width: 175px;
+	min-width: 175px;
 	max-width: 200px;
-    min-height: 300px;
-    margin: 10px;
-    padding: 4px;
+	min-height: 300px;
+	margin: 10px;
+	padding: 4px;
 	background-color: var(--secondary-bg-color);
-	
 }
 #forecast {
 	text-align: center;
 }
 
-
 #buttons {
 	text-align: center;
-	
 }
 
 .cityButton {
@@ -88,4 +104,9 @@ span {
 	color: var(--border-color);
 }
 
-	
+@media only screen and (max-width: 767px) {
+	.current,
+	.search {
+		font-size: 1rem;
+	}
+}
