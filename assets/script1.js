@@ -100,7 +100,7 @@ function fetchForecastAPI(city) {
 			console.log(response);
 			let forecastEl = document.getElementById('forecast');
 			forecastEl.innerHTML = '';
-			for (i = 1; i < 45; i += 8) {
+			for (i = 0; i < response.list.length; i += 8) {
 				let div = document.createElement('div');
 				console.log(response);
 				let icon = response.list[i].weather[0].icon;

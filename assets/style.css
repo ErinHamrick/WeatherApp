@@ -4,6 +4,7 @@
 	--main-bg-color: #bcb49c;
 	--secondary-bg-color: #bfc9ca;
 }
+
 body {
 	background-color: var(--main-bg-color);
 	color: var(--border-color);
